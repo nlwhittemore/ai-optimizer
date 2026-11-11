@@ -21,6 +21,19 @@ ingest  ->  measure  ->  coach  ->  verify  ->  render  ->  apply
 | `spotter render` | One page: findings, proposed changes, the working record. | No |
 | `spotter apply` | Commits a finding's proposed text to the target repo on a branch. Refuses unverified findings. | No |
 
+## Live coach (the part that intervenes)
+
+`spotter/live.py` runs as a Claude Code hook every time you send a message. It reads the live session
+(model, effort, context size, idle time, what you just typed), checks it against your profile, and puts a
+one-line **Coach:** note at the top of the reply when something is worth changing right now: a quick ask at top
+effort, a message into a cold 400k-token context, an instruction you have typed a dozen times, a pasted key,
+a correction that should become a rule. It also asks the model itself to flag an ask that is missing something
+it would have to guess. At most one note per message, each kind once per session, `coach off` to mute.
+
+```bash
+./install.sh        # registers the hooks in ~/.claude/settings.json
+```
+
 ## Sources
 
 | Source | Adapter | State |
@@ -46,6 +59,7 @@ Python 3.10+, standard library only.
 - **Replay**: re-run a past ask on another model or effort level and compare. This is what turns
   "try a different model" from advice into evidence, and what makes a new model release actionable.
 - **Coach as a command**: in the first pass the coach step was done by hand in a Claude Code session.
-- **Always-on**: `hooks/claude-settings.example.json` re-ingests when a Claude Code session ends; untested.
+- **Live coach outside Claude Code**: Codex, ChatGPT desktop and Claude chat have no hook; they need a Mac helper.
+- **Live coach in cloud sessions**: the hook has to ship with the repo or the environment; not set up yet.
 - **Chat apps live** (no export step), and anything outside AI tools.
 - `tools/` holds the one-off scripts used to export cloud sessions for the first read.

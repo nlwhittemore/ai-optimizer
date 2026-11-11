@@ -1,0 +1,8 @@
+{
+  "standing_instructions": [
+    {"id": "merge", "pattern": "^\\W*(merge|merge it|push it|push this|lets push it|ship it)\\b", "max_words": 8,
+     "note": "You have typed a standalone merge or push request 13 times across nine sessions, and no instruction file tells agents to merge without being asked. Say 'make it a rule' and I will write it into this repo's CLAUDE.md so you stop having to."},
+    {"id": "preview", "pattern": "(where can i (see|preview)|give me a link|is it live|where is the preview)", "max_words": 12,
+     "note": "You have had to ask for the link or preview in six sessions. Say 'make it a rule' and I will add 'start every build reply with the link' to this repo's CLAUDE.md."}
+  ]
+}

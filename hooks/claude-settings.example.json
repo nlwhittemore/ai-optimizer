@@ -1,7 +1,0 @@
-{
-  "hooks": {
-    "SessionEnd": [
-      { "hooks": [ { "type": "command", "command": "python3 -m spotter ingest --claude-home ~/.claude --codex-home ~/.codex && python3 -m spotter measure" } ] }
-    ]
-  }
-}
