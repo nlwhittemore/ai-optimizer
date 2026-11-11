@@ -59,7 +59,7 @@ Python 3.10+, standard library only.
 - **Replay**: re-run a past ask on another model or effort level and compare. This is what turns
   "try a different model" from advice into evidence, and what makes a new model release actionable.
 - **Coach as a command**: in the first pass the coach step was done by hand in a Claude Code session.
-- **Live coach outside Claude Code**: Codex, ChatGPT desktop and Claude chat have no hook; they need a Mac helper.
+- **Mac menu bar app**: `spotter/watch.py` is its core (follows Claude Code and Codex logs, raises notes); the menu bar, native notifications and reading the desktop apps are specified in CLAUDE.md and must be built on a Mac.
 - **Live coach in cloud sessions**: the hook has to ship with the repo or the environment; not set up yet.
 - **Chat apps live** (no export step), and anything outside AI tools.
 - `tools/` holds the one-off scripts used to export cloud sessions for the first read.
